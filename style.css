@@ -13,6 +13,8 @@ a {
 
 img {
     max-width: 100%;
+    display: block;
+    border-radius: 5px;
 }
 
 body {
@@ -74,18 +76,244 @@ body {
     padding: 30px;
 }
 
+.sidenav li a{
+    display: block;
+    min-width: 60px;
+    max-width: 100px;
+    margin: 0 auto 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px 0px rgba(44,44,44,0.15);
+    transition: .1s ease-out;
+
+}
+
+.sidenav li a:hover {
+    background-color: #B07DFB;
+}
+
+/*CONTENT*/
+
 .content {
     grid-area: content;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
 }
+
+.col-wide {
+    grid-column: 1/-1;
+}
+
+.image-1 {
+   grid-row: span 2;
+   align-self: end; 
+}
+
+.image-2 {
+    align-self: end;
+}
+
+p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    letter-spacing: 0.005em;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.info p+p {
+    margin-top: 30px;
+}
+
+.title {
+    color:#B07DFB;
+}
+
+.title h1 {
+    font-size: 3.75em;
+    line-height: 1;
+    font-weight: 700;
+}
+
+.title span {
+    font-size: 0.875em;
+    font-style: italic;
+}
+
+.features {
+    display: flex;
+    align-items:  flex-start;
+}
+
+.features > div {
+    width: 80px;
+    text-align: center;
+    background: linear-gradient(135deg,#84e,#B07DFB);
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, .15);
+    position: relative;
+}
+
+.features > div:first-child {
+    margin-right: 30px;
+}
+
+.number {
+    color: #B07DFB;
+    font-size:3em ;
+    line-height: 1;
+    margin: 10px auto;
+    display: block;
+    position: relative; 
+    top: 2px;
+}
+
+.mark {
+    background: white;
+    display: block;
+    color: #B07DFB;
+    border-radius: 0 0 5px 5px;
+    padding: 5px 0;
+}
+
+.spotlight {
+    font-size:0.875em ;
+    color: #B07DFB;
+    max-width: 16em;
+}
+
+.quote, .atributtes {
+    align-self: start;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px 0px rgba(44, 44, 44, 0.15);
+    background:linear-gradient(135deg,#84e,#B07DFB);
+}
+
+.quote p {
+    font-size: 1.5em;
+    font-style: italic;
+    text-align: center;
+    color: white;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.atributtes li {
+    color: white;
+    font-family: Courier,monospace;
+    font-size: 1.125em;
+    padding: 15px;
+
+}
+
+.atributtes li+li {
+    border-top: 2px solid #B07DFB;
+}
+
+/*ANUNCIONS*/
 
 .ad {
     grid-area: ad;
+    background: #fafbfc;
+    display: grid;
+    align-content:start ;
+    padding: 30px; 
+    gap: 30px;
 }
+
+/*FOOTER*/
 
 .footer {
     grid-area: footer;
+    background: linear-gradient(135deg,#84e,#B07DFB);;
 }
 
+.footer p {
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
 
+@media (max-width:1200px) {
+    .container {
+        grid-template-columns:minmax(160px,1fr) 3fr ;
+        grid-template-areas:
+        "header header"
+        "sidenav content"
+        "sidenav ad"
+        "footer footer"
+    }
+}
+
+@media (max-width: 760px) {
+    .container {
+        grid-template-columns: 100%;
+        grid-template-areas:
+        "header"
+        "sidenav"
+        "content"
+        "ad"
+        "footer" ;
+    }
+
+    .header {
+        grid-template-columns: auto;
+    }
+
+    .logo {
+        margin-bottom: 20px;
+    }
+
+    .header nav a {
+        font-size: 1em;
+    }
+
+    .header li + li {
+        margin-left: 10px;
+    }
+
+    .sidenav {
+        padding: 0 30px;
+        overflow-x: auto;
+        position: relative;
+        /* -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar; */
+    }
+
+    @keyframes seta {
+        from {
+            right:30px;
+        }
+        to {
+            right:20px;
+        }
+    }
+
+    .sidenav::after {
+        content:'→';
+        position: absolute;
+        top: 5px;
+        right: 30px;
+        color: rgba(0, 0, 0, 0.3);
+        animation: seta .5s ease-in 0s infinite alternate;
+    }
+
+    .sidenav ul {
+        display: flex;
+    }
+
+    .sidenav ul li {
+        flex: 1 0 60px;
+    }
+
+    .sidenav li a {
+        margin: 30px 30px 30px 0;
+    }
+}
 
 
